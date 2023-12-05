@@ -1,5 +1,5 @@
 const container = document.querySelector(".container");
-container.innerHTML = "";
+//container.innerHTML = "";
 for (let i = 1; i < 10; i++){  
     let r = Math.floor(Math.random()*256);
     let g = Math.floor(Math.random()*256);
@@ -64,3 +64,51 @@ const disappear = (event) =>{
 }
 
 box4.addEventListener("click", disappear);
+
+//box_5:
+const box5 = document.getElementById("5");
+const dobozok = document.querySelectorAll(".box");
+
+let kerek = false;
+
+const kerekites = () => {
+    if (!kerek) {
+        dobozok.forEach(doboz => {
+            doboz.style.borderRadius = "50%";
+        });
+        kerek = true;
+    } else {
+        dobozok.forEach(doboz => {
+            doboz.style.borderRadius = "0";
+        });
+        kerek = false;
+    }
+}
+
+box5.addEventListener("click", kerekites);
+
+//box_6:
+const box6 = document.getElementById("6");
+
+const coordinates = (event) => {
+    let x = event.clientX;
+    let y = event.clientY;
+
+    box6.innerHTML = `X: ${x}<br>Y: ${y}`;
+    box6.style.fontSize = `25px`; 
+}
+
+document.addEventListener("mousemove", coordinates);
+
+//box7 input buttom input select input buttom
+const box7 = document.getElementById("7");
+const inputText = document.getElementById("inputText");
+const changeTextBtn = document.getElementById("changeText");
+const box7Content = document.getElementById("7");
+
+const changeBoxContent = () => {
+    const text = inputText.value;
+    box7Content.innerText = text;
+}
+
+changeTextBtn.addEventListener("click", changeBoxContent);
